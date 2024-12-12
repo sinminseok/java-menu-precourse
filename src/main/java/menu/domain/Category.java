@@ -21,7 +21,7 @@ public enum Category {
         this.menus = menus;
     }
 
-    public void isExistMenu(final String menuName) {
+    public static void isExistMenu(final String menuName) {
         for (Category category : values()) {
             if (category.menus.stream().anyMatch(menu -> menu.equals(menuName))) {
                 return;

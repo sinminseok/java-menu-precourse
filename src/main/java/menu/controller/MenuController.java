@@ -1,5 +1,7 @@
 package menu.controller;
 
+import menu.domain.Coach;
+import menu.domain.CoachGroup;
 import menu.service.CoachService;
 import menu.service.MenuService;
 import menu.view.InputView;
@@ -20,5 +22,14 @@ public class MenuController {
     public void run(){
         OutputView.printStartMessage();
         List<String> names = InputView.inputCoachNames();
+
+        CoachGroup coachGroup = coachService.saveCoachGroup(names);
+
+        List<Coach> coaches = coachGroup.getCoaches();
+
+        for(Coach coach : coaches){
+            List<String> menus = InputView.inputPickyEating(coach.getName());
+            coachService.registerPickyEating(coach, menus);
+        }
     }
 }

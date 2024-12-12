@@ -16,4 +16,8 @@ public class CoachGroup {
                 .collect(Collectors.toList());
         return new CoachGroup(collect);
     }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
 }
