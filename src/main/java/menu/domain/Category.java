@@ -2,7 +2,6 @@ package menu.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import menu.global.exception.CustomException;
-import menu.global.exception.ErrorMessage;
 
 import java.util.Arrays;
 import java.util.List;

@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class CategoryRecommend {
+    private static final Integer MIN_RECOMMEND_RANGE = 1;
+    private static final Integer MAX_RECOMMEND_RANGE = 5;
 
     private final Map<Day, Category> history;
 
@@ -12,8 +14,8 @@ public class CategoryRecommend {
         this.history = new HashMap<>();
     }
 
-    public Category recommendCategoryByDay(Day day){
-        int order = Randoms.pickNumberInRange(1, 5);
+    public Category recommendCategoryByDay(final Day day){
+        int order = Randoms.pickNumberInRange(MIN_RECOMMEND_RANGE, MAX_RECOMMEND_RANGE);
         Category recommendCategory = Category.findByOrder(order);
         if(canRecommendCategory(recommendCategory)){
             history.put(day, recommendCategory);
@@ -22,7 +24,7 @@ public class CategoryRecommend {
         return recommendCategoryByDay(day);
     }
 
-    private boolean canRecommendCategory(Category recommendCategory){
+    private boolean canRecommendCategory(final Category recommendCategory){
         Collection<Category> categories = history.values();
         int orignSize = categories.size();
         Set<Category> set = new HashSet<>(categories);
