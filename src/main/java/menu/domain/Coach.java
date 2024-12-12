@@ -31,12 +31,7 @@ public class Coach {
     }
 
     private boolean isExistPickyEating(final String menuName) {
-        for (String picky : pickyEating) {
-            if (picky.equals(menuName)) {
-                return true;
-            }
-        }
-        return false;
+        return pickyEating.stream().anyMatch(picky -> picky.equals(menuName));
     }
 
     public void registerMenu(final String menu) {
