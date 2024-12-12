@@ -26,14 +26,14 @@ public enum Category {
         this.menus = menus;
     }
 
-    public static Category findByOrder(final int number){
+    public static Category findByOrder(final int number) {
         return Arrays.stream(Category.values())
                 .filter(category -> category.order == number)
                 .findFirst()
                 .orElseThrow(() -> new CustomException(ERROR_CATEGORY_ORDER_RANGE));
     }
 
-    public String recommendMenu(){
+    public String recommendMenu() {
         return Randoms.shuffle(menus).get(0);
     }
 
@@ -48,14 +48,6 @@ public enum Category {
 
     public String getName() {
         return name;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public List<String> getMenus() {
-        return menus;
     }
 }
 

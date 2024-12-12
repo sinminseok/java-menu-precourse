@@ -14,17 +14,17 @@ public class CategoryRecommend {
         this.history = new HashMap<>();
     }
 
-    public Category recommendCategoryByDay(final Day day){
+    public Category recommendCategoryByDay(final Day day) {
         int order = Randoms.pickNumberInRange(MIN_RECOMMEND_RANGE, MAX_RECOMMEND_RANGE);
         Category recommendCategory = Category.findByOrder(order);
-        if(canRecommendCategory(recommendCategory)){
+        if (canRecommendCategory(recommendCategory)) {
             history.put(day, recommendCategory);
             return recommendCategory;
         }
         return recommendCategoryByDay(day);
     }
 
-    private boolean canRecommendCategory(final Category recommendCategory){
+    private boolean canRecommendCategory(final Category recommendCategory) {
         Collection<Category> categories = history.values();
         int orignSize = categories.size();
         Set<Category> set = new HashSet<>(categories);

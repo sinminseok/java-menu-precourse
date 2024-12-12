@@ -13,6 +13,9 @@ public class CoachGroupValidator {
     private static final Integer MIN_COACH_GROUP_RANGE = 2;
     private static final Integer MAX_COACH_GROUP_RANGE = 5;
 
+    private CoachGroupValidator(){
+    }
+
     public static void validateCoachGroup(final List<String> names) {
         validateCoachGroupRange(names);
         validateDuplicatedName(names);
@@ -20,13 +23,13 @@ public class CoachGroupValidator {
 
     private static void validateDuplicatedName(List<String> names) {
         Set<String> setNames = new HashSet<>(names);
-        if(setNames.size() != names.size()){
+        if (setNames.size() != names.size()) {
             throw new CustomException(ERROR_DUPLICATED_COACH_NAME);
         }
     }
 
     private static void validateCoachGroupRange(final List<String> names) {
-        if(names.size() < MIN_COACH_GROUP_RANGE || names.size() > MAX_COACH_GROUP_RANGE){
+        if (names.size() < MIN_COACH_GROUP_RANGE || names.size() > MAX_COACH_GROUP_RANGE) {
             throw new CustomException(ERROR_COACH_COUNT_RANGE);
         }
     }

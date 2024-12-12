@@ -3,6 +3,10 @@ package menu.global.utils;
 import java.util.function.Supplier;
 
 public class Retry {
+
+    private Retry(){
+    }
+
     public static <T> T retryOnExceptionWithResult(final Supplier<T> operation) {
         try {
             return operation.get();

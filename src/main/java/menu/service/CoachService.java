@@ -7,11 +7,11 @@ import java.util.List;
 
 public class CoachService {
 
-    public CoachGroup saveCoachGroup(final List<String> name){
+    public CoachGroup saveCoachGroup(final List<String> name) {
         return CoachGroup.from(name);
     }
 
-    public void registerPickyEating(final Coach coach, final List<String> menus){
+    public void registerPickyEating(final Coach coach, final List<String> menus) {
         coach.registerPickyEatings(menus);
     }
 }

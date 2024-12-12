@@ -4,7 +4,7 @@ import menu.domain.*;
 
 public class MenuService {
 
-    public CategoryRecommend recommendMenu(CoachGroup coachGroup) {
+    public CategoryRecommend recommendMenu(final CoachGroup coachGroup) {
         CategoryRecommend categoryRecommend = new CategoryRecommend();
         for (Day day : Day.values()) {
             Category category = categoryRecommend.recommendCategoryByDay(day);
@@ -14,9 +14,9 @@ public class MenuService {
         return categoryRecommend;
     }
 
-    private void recommendMenuByCoach(Coach coach, Category category){
+    private void recommendMenuByCoach(final Coach coach, final Category category) {
         String menuName = category.recommendMenu();
-        if(!coach.canRecommendMenu(menuName)){
+        if (!coach.canRecommendMenu(menuName)) {
             recommendMenuByCoach(coach, category);
             return;
         }

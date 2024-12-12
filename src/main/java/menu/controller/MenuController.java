@@ -17,7 +17,7 @@ public class MenuController {
     private final CoachService coachService;
     private final MenuService menuService;
 
-    public MenuController(CoachService coachService, MenuService menuService) {
+    public MenuController(final CoachService coachService, final MenuService menuService) {
         this.coachService = coachService;
         this.menuService = menuService;
     }
@@ -36,13 +36,13 @@ public class MenuController {
         return coachService.saveCoachGroup(names);
     }
 
-    private void registerPickyEating(Coach coach){
+    private void registerPickyEating(final Coach coach){
             List<String> menus = InputView.inputPickyEating(coach.getName());
             coachService.registerPickyEating(coach, menus);
     }
 
 
-    private void recommendMenus(CoachGroup coachGroup){
+    private void recommendMenus(final CoachGroup coachGroup){
         CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
         OutputView.printMenuRecommendResult(categoryRecommend.getHistory(), CoachMapper.toCoachResponses(coachGroup));
     }

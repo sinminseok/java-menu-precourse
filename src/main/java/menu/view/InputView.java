@@ -20,7 +20,7 @@ public class InputView {
         return Converter.splitDelimiter(input);
     }
 
-    public static List<String> inputPickyEating(String coachName){
+    public static List<String> inputPickyEating(final String coachName){
         System.out.println(NEXT_LINE + coachName + INPUT_PICKY_EATING_MESSAGE);
         String input = Console.readLine();
         return Converter.splitDelimiter(input);
