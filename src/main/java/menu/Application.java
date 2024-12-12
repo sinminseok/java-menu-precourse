@@ -9,5 +9,6 @@ public class Application {
         CoachService coachService = new CoachService();
         MenuService menuService = new MenuService();
         MenuController menuController = new MenuController(coachService, menuService);
+        menuController.run();
     }
 }

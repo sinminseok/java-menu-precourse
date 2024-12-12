@@ -13,14 +13,14 @@ public class CategoryRecommend {
     }
 
 
-    public void recommendCategoryByDay(Day day){
+    public Category recommendCategoryByDay(Day day){
         int order = Randoms.pickNumberInRange(1, 5);
         Category recommendCategory = Category.findByOrder(order);
         if(canRecommendCategory(recommendCategory)){
             history.put(day, recommendCategory);
-            return;
+            return recommendCategory;
         }
-        recommendCategoryByDay(day);
+        return recommendCategoryByDay(day);
     }
 
     private boolean canRecommendCategory(Category recommendCategory){

@@ -1,5 +1,6 @@
 package menu.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import menu.global.exception.CustomException;
 import menu.global.exception.ErrorMessage;
 
@@ -33,6 +34,10 @@ public enum Category {
                 .orElseThrow(() -> new CustomException(ERROR_CATEGORY_ORDER_RANGE));
     }
 
+    public String recommendMenu(){
+        return Randoms.shuffle(menus).get(0);
+    }
+
     public static void isExistMenu(final String menuName) {
         for (Category category : values()) {
             if (category.menus.stream().anyMatch(menu -> menu.equals(menuName))) {
@@ -40,6 +45,18 @@ public enum Category {
             }
         }
         throw new CustomException(ERROR_MENU_NAME);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public List<String> getMenus() {
+        return menus;
     }
 }
 

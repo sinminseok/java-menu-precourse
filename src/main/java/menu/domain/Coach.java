@@ -13,15 +13,30 @@ public class Coach {
 
     private final String name;
     private final List<String> pickyEating;
+    private final List<String> menus;
 
     private Coach(final String name) {
         this.name = name;
         this.pickyEating = new ArrayList<>();
+        this.menus = new ArrayList<>();
     }
 
     public static Coach from(final String name){
         validateNameRange(name);
         return new Coach(name);
+    }
+
+    public boolean isExistPickyEating(final String menuName){
+        for(String picky : pickyEating){
+            if(picky.equals(menuName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void registerMenu(final String menu){
+        menus.add(menu);
     }
 
     public void registerPickyEating(final String menuName){

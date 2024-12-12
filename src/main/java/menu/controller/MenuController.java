@@ -31,5 +31,7 @@ public class MenuController {
             List<String> menus = InputView.inputPickyEating(coach.getName());
             coachService.registerPickyEating(coach, menus);
         }
+
+        menuService.recommendMenu(coachGroup);
     }
 }
