@@ -10,6 +10,7 @@ import java.util.Map;
 import static menu.global.constants.ViewMessage.*;
 
 public class OutputView {
+
     private OutputView() {
     }
 

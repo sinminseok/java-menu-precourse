@@ -41,7 +41,6 @@ public class MenuController {
             coachService.registerPickyEating(coach, menus);
     }
 
-
     private void recommendMenus(final CoachGroup coachGroup){
         CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
         OutputView.printMenuRecommendResult(categoryRecommend.getHistory(), CoachMapper.toCoachResponses(coachGroup));

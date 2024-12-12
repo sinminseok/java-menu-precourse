@@ -15,3 +15,4 @@ public class CoachService {
         coach.registerPickyEatings(menus);
     }
 }
+//todo frequency
