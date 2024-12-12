@@ -3,10 +3,7 @@ package menu.view;
 import menu.domain.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static menu.global.constants.ViewMessage.*;
 
@@ -23,12 +20,13 @@ public class OutputView {
         System.out.println(DAY_INFORMATION);
         System.out.printf(CATEGORY_INFORMATION, parseCategory(categoryRecommend));
         for(Coach coach : coachGroup.getCoaches()){
-            System.out.printf(COACH_MENU_INFORMATION, coach.getName(), parseMenus(coach.getMenus()));
+            System.out.printf(COACH_MENU_INFORMATION, coach.getName(), joinDivider(coach.getMenus()));
         }
+        System.out.println(RECOMMEND_RESULT_SUCCESS);
     }
 
-    private static String parseMenus(List<String> menuNames){
-        return String.join(" | ", menuNames);
+    private static String joinDivider(List<String> menuNames){
+        return String.join(DIVIDER, menuNames);
     }
 
 
@@ -37,6 +35,6 @@ public class OutputView {
         for(Day day : Day.values()){
             categories.add(categoryRecommend.getHistory().get(day).getName());
         }
-        return String.join(" | ", categories);
+        return joinDivider(categories);
     }
 }
