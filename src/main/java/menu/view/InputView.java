@@ -2,6 +2,7 @@ package menu.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import menu.global.utils.Converter;
+import menu.global.validator.InputValidator;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class InputView {
     public static List<String> inputCoachNames(){
         System.out.println(INPUT_COACH_NAMES_MESSAGE);
         String input = Console.readLine();
-        //todo 검증
+        InputValidator.validateInputCoachNames(input);
         return Converter.splitDelimiter(input);
     }
 
