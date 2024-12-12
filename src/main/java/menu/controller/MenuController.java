@@ -1,5 +1,6 @@
 package menu.controller;
 
+import menu.domain.CategoryRecommend;
 import menu.domain.Coach;
 import menu.domain.CoachGroup;
 import menu.service.CoachService;
@@ -32,6 +33,7 @@ public class MenuController {
             coachService.registerPickyEating(coach, menus);
         }
 
-        menuService.recommendMenu(coachGroup);
+        CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
+        OutputView.printMenuRecommendResult(categoryRecommend, coachGroup);
     }
 }
