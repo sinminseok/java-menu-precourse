@@ -16,7 +16,7 @@ public class MenuService {
 
     private void recommendMenuByCoach(Coach coach, Category category){
         String menuName = category.recommendMenu();
-        if(coach.isExistPickyEating(menuName)){
+        if(!coach.canRecommendMenu(menuName)){
             recommendMenuByCoach(coach, category);
             return;
         }

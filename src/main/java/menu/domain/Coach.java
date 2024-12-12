@@ -21,31 +21,40 @@ public class Coach {
         this.menus = new ArrayList<>();
     }
 
-    public static Coach from(final String name){
+    public static Coach from(final String name) {
         validateNameRange(name);
         return new Coach(name);
     }
 
-    public boolean isExistPickyEating(final String menuName){
-        for(String picky : pickyEating){
-            if(picky.equals(menuName)){
+    public boolean canRecommendMenu(final String menuName) {
+        return !isExistPickyEating(menuName) && !isDuplicatedMenu(menuName);
+    }
+
+    private boolean isDuplicatedMenu(final String menuName) {
+        return menus.stream()
+                .anyMatch(menu -> menu.equals(menuName));
+    }
+
+    private boolean isExistPickyEating(final String menuName) {
+        for (String picky : pickyEating) {
+            if (picky.equals(menuName)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void registerMenu(final String menu){
+    public void registerMenu(final String menu) {
         menus.add(menu);
     }
 
-    public void registerPickyEating(final String menuName){
+    public void registerPickyEating(final String menuName) {
         Category.isExistMenu(menuName);
         pickyEating.add(menuName);
     }
 
-    private static void validateNameRange(final String name){
-        if(name.length() < 2 || name.length() >4){
+    private static void validateNameRange(final String name) {
+        if (name.length() < 2 || name.length() > 4) {
             throw new CustomException(ERROR_COACH_NAME_RANGE);
         }
     }
