@@ -12,7 +12,6 @@ public class CategoryRecommend {
         this.history = new HashMap<>();
     }
 
-
     public Category recommendCategoryByDay(Day day){
         int order = Randoms.pickNumberInRange(1, 5);
         Category recommendCategory = Category.findByOrder(order);
@@ -31,4 +30,7 @@ public class CategoryRecommend {
         return !(set.size() < orignSize);
     }
 
+    public Map<Day, Category> getHistory() {
+        return history;
+    }
 }
