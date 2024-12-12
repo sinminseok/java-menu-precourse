@@ -3,6 +3,7 @@ package menu.controller;
 import menu.domain.CategoryRecommend;
 import menu.domain.Coach;
 import menu.domain.CoachGroup;
+import menu.global.utils.Retry;
 import menu.service.CoachService;
 import menu.service.MenuService;
 import menu.view.InputView;
@@ -22,8 +23,10 @@ public class MenuController {
 
     public void run(){
         OutputView.printStartMessage();
-        CoachGroup coachGroup = saveCoaches();
-        registerPickyEating(coachGroup.getCoaches());
+        CoachGroup coachGroup = Retry.retryOnExceptionWithResult(() -> saveCoaches());
+        for(Coach coach : coachGroup.getCoaches()){
+            Retry.retryOnExceptionWithoutResult(() -> registerPickyEating(coach));
+        }
         recommendMenus(coachGroup);
     }
 
@@ -32,12 +35,11 @@ public class MenuController {
         return coachService.saveCoachGroup(names);
     }
 
-    private void registerPickyEating(List<Coach> coaches){
-        for(Coach coach : coaches){
+    private void registerPickyEating(Coach coach){
             List<String> menus = InputView.inputPickyEating(coach.getName());
             coachService.registerPickyEating(coach, menus);
-        }
     }
+
 
     private void recommendMenus(CoachGroup coachGroup){
         CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
