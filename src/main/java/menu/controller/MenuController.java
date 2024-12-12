@@ -22,17 +22,24 @@ public class MenuController {
 
     public void run(){
         OutputView.printStartMessage();
+        CoachGroup coachGroup = saveCoaches();
+        registerPickyEating(coachGroup.getCoaches());
+        recommendMenus(coachGroup);
+    }
+
+    private CoachGroup saveCoaches(){
         List<String> names = InputView.inputCoachNames();
+        return coachService.saveCoachGroup(names);
+    }
 
-        CoachGroup coachGroup = coachService.saveCoachGroup(names);
-
-        List<Coach> coaches = coachGroup.getCoaches();
-
+    private void registerPickyEating(List<Coach> coaches){
         for(Coach coach : coaches){
             List<String> menus = InputView.inputPickyEating(coach.getName());
             coachService.registerPickyEating(coach, menus);
         }
+    }
 
+    private void recommendMenus(CoachGroup coachGroup){
         CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
         OutputView.printMenuRecommendResult(categoryRecommend, coachGroup);
     }
