@@ -2,10 +2,11 @@ package menu.global.validator;
 
 import menu.global.exception.CustomException;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import static menu.global.exception.ErrorMessage.ERROR_COACH_NAME_RANGE;
-import static menu.global.exception.ErrorMessage.ERROR_PICKY_EATING_COUNT_RANGE;
+import static menu.global.exception.ErrorMessage.*;
 
 public class CoachValidator {
     private static final Integer MIN_NAME_RANGE = 2;
@@ -19,7 +20,19 @@ public class CoachValidator {
         }
     }
 
-    public static void validatePickyEatingRange(final List<String> menus){
+    public static void validatePickyEating(final List<String> menus){
+        validatePickyEatingRange(menus);
+        validateDuplicateMenus(menus);
+    }
+
+    private static void validateDuplicateMenus(List<String> menus) {
+        Set<String> setNames = new HashSet<>(menus);
+        if(setNames.size() != menus.size()){
+            throw new CustomException(ERROR_DUPLICATED_PICKY_EATING);
+        }
+    }
+
+    private static void validatePickyEatingRange(final List<String> menus){
         if(menus.size() < MIN_PICKY_EATING_RANGE || menus.size() > MAX_PICKY_EATING_RANGE){
             throw new CustomException(ERROR_PICKY_EATING_COUNT_RANGE);
         }

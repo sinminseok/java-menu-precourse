@@ -39,7 +39,7 @@ public class Coach {
     }
 
     public void registerPickyEatings(final List<String> menuNames) {
-        CoachValidator.validatePickyEatingRange(menuNames);
+        CoachValidator.validatePickyEating(menuNames);
         menuNames.stream()
                 .forEach(menuName -> registerPickyEating(menuName));
     }
