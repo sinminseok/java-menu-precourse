@@ -12,7 +12,6 @@ public class CoachService {
     }
 
     public void registerPickyEating(final Coach coach, final List<String> menus){
-        menus.stream()
-                .forEach(menu -> coach.registerPickyEating(menu));
+        coach.registerPickyEatings(menus);
     }
 }

@@ -43,7 +43,13 @@ public class Coach {
         menus.add(menu);
     }
 
-    public void registerPickyEating(final String menuName) {
+    public void registerPickyEatings(final List<String> menuNames) {
+        CoachValidator.validatePickyEatingRange(menuNames);
+        menuNames.stream()
+                .forEach(menuName -> registerPickyEating(menuName));
+    }
+
+    private void registerPickyEating(final String menuName) {
         Category.isExistMenu(menuName);
         pickyEating.add(menuName);
     }
