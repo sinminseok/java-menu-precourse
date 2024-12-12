@@ -1,6 +1,7 @@
 package menu.global.exception;
 
 public enum ErrorMessage {
+    ERROR_DUPLICATED_COACH_NAME("중복되는 코치 이름을 허용하지 않습니다."),
     ERROR_COACH_COUNT_RANGE("코치는 최소2명, 최대5명이여야 합니다."),
     ERROR_COACH_NAME_RANGE("코치 이름은 2~4글자 입니다."),
     ERROR_PICKY_EATING_COUNT_RANGE("코치 이름은 2~4글자 입니다."),

@@ -14,7 +14,7 @@ public class CoachGroup {
     }
 
     public static CoachGroup from(final List<String> names) {
-        CoachGroupValidator.validateCoachGroupRange(names);
+        CoachGroupValidator.validateCoachGroup(names);
         List<Coach> collect = names.stream()
                 .map(Coach::from)
                 .collect(Collectors.toList());
