@@ -3,6 +3,7 @@ package menu.controller;
 import menu.domain.CategoryRecommend;
 import menu.domain.Coach;
 import menu.domain.CoachGroup;
+import menu.dto.CoachMapper;
 import menu.global.utils.Retry;
 import menu.service.CoachService;
 import menu.service.MenuService;
@@ -43,6 +44,6 @@ public class MenuController {
 
     private void recommendMenus(CoachGroup coachGroup){
         CategoryRecommend categoryRecommend = menuService.recommendMenu(coachGroup);
-        OutputView.printMenuRecommendResult(categoryRecommend, coachGroup);
+        OutputView.printMenuRecommendResult(categoryRecommend.getHistory(), CoachMapper.toCoachResponses(coachGroup));
     }
 }
