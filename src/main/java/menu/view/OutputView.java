@@ -31,6 +31,7 @@ public class OutputView {
         return String.join(" | ", menuNames);
     }
 
+
     private static String parseCategory(CategoryRecommend categoryRecommend){
         List<String> categories = new ArrayList<>();
         for(Day day : Day.values()){
